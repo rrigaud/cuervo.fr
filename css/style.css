@@ -1,0 +1,264 @@
+* {
+    -moz-transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, -moz-transform;
+    -o-transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, -o-transform;
+    -webkit-transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, -webkit-transform;
+    transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+}
+
+body {
+    background: #cccccc;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1em;
+    margin:0;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/********************** NAVIGATION **********************/
+
+.nav {
+    z-index: 10;
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    display: -webkit-flex; /* OK chrome 21 */
+    display: flex;
+}
+ 
+.nav li a {
+    color: white;
+    display: block;
+    cursor:pointer;
+    line-height: 3.4em;
+    padding: 0 0.8em;
+    text-decoration: none;
+    border-right: 1px solid #2e2e2e;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+#artist {
+    overflow:hidden;
+    -webkit-border-radius:20px;
+    -moz-border-radius:20px;
+    border-radius:20px;
+    width:40px;
+    height:40px;
+    margin-left: 6px;
+    margin-top: 7px;
+    display: block;
+    cursor:pointer;
+}
+
+#filter {
+    -webkit-flex: 1;
+    flex: 1;
+    min-width: 50px;
+    font-size: 1em;
+    padding: 0 0.8em;
+    margin: 0.2em;
+    border: 0 none;
+    color: white;
+    outline: none;
+    background: #1f7f5c;
+}
+
+#filter:focus, #filter:hover {
+    background: rgb(64, 151, 119);
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+
+/********************** CARDS **********************/
+
+.cards { 
+    margin-top: 60px;
+    padding: .5vw;
+    -ms-flex-wrap: wrap;
+    -ms-flex-direction: column;
+    -webkit-flex-flow: row wrap; 
+    flex-flow: row wrap; 
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+.cardflex {
+    -webkit-box-flex: auto;
+    -ms-flex: auto;
+    flex: auto; 
+    width: 200px; 
+    max-width: 400px;
+    margin: 2vw;
+    cursor:pointer;
+}
+
+.cardbox {
+    transition: 0.3s;
+    background: linear-gradient(to bottom, #F6F6F6 0%, #EAEAEA 100%) repeat scroll 0 0 transparent;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 1px rgba(0, 0, 0, 0.1), 0 3px 1px rgba(0, 0, 0, 0.05);
+    text-shadow: 0 1px 0 #DDDDDD;
+}
+
+.cardbox:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.cards .cardbox img { 
+  width: 100%; 
+  height: auto;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.container {
+    padding-top:2px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.available {
+    background: green;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    width:8px;
+    height:8px;
+    display: block;
+    float:left;
+    margin-top:6px;
+    margin-right: 4px;
+}
+
+.non {
+    background: red;
+}
+
+
+/********************** FENETRE MODALE CUERVO **********************/
+
+#cuervo_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    padding-top: 10px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal (modal_description) */
+#cuervo_image {
+    margin: auto;
+    display: block;
+    width: 25%;
+    height: auto;
+}
+
+#cuervo_description {
+    margin-top: 6px;
+    color: #ffffff;
+    font-size: 1em;
+}
+
+
+
+/********************** FENETRE MODALE **********************/
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    padding-top: 60px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal (modal_image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Modal (modal_description) */
+#modal_description {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #modal_description {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}

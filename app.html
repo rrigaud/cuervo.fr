@@ -1,0 +1,96 @@
+<app>
+    <ul class="nav">
+        <li>
+            <img src="cuervo_icon.jpg" id="artist" onclick={viewCuervo}>
+        </li>
+        <li>
+            <a onclick={viewCuervo}>Cuervo</a>
+        </li>
+        <input id="filter" type="text" placeholder="Recherche (tableau, année, format, technique...)" onkeyup={ filterTab } />
+
+    </ul>
+    <div class="cards">
+        <div class="cardflex wow fadeInUp" each={tabs_displayed}>
+            <div class="cardbox" onclick={viewTab}>
+                <img src={ 'tableaux/thumbs/' + tabID + '.jpg' } alt="Tableau">
+                <div class="container"><span class="available { non: available }"></span>{name} <i>({format})</o></div>
+            </div>
+        <div>
+    </div>
+
+    <!-- La fenêtre modale pour les tableaux -->
+    <div id="tab_modal" class="modal" onclick="this.style.display = 'none';">
+        <img class="modal-content" id="modal_image">
+        <div id="modal_description"></div>
+    </div>
+
+    <!-- La fenêtre modale pour Cuervo -->
+    <div id="cuervo_modal" class="modal" onclick="this.style.display = 'none';">
+        <img id="cuervo_image" src="cuervo.jpg">
+        <div id="cuervo_description"></div>
+    </div>
+
+    <script>
+        this.tabs_filtered = tableaux;
+        this.tabs_displayed = this.tabs_filtered.slice(0, 12);
+
+        filterTab() {
+            window.scrollTo(0,0);
+            this.search = document.getElementById("filter").value;
+            var filterValues = {catID : this.catID, search :this.search};
+            // Passer plusieurs paramètres de filtre : Nom, catégorie,... ??? Ca marche !
+            this.tabs_filtered = tableaux.filter(recherche,filterValues);
+            this.tabs_displayed = this.tabs_filtered.slice(0, 12);
+        }
+
+        function recherche(element) {
+            // Si champ de recherche vide, on retourne tout, ou alors on recherche le texte
+            return (this.search == "")||(element.tabID.toLowerCase().search(this.search.toLowerCase()) != -1)
+                                        ||(element.name.toLowerCase().search(this.search.toLowerCase()) != -1)
+                                        ||(element.category.toLowerCase().search(this.search.toLowerCase()) != -1)
+                                        ||(element.format.toLowerCase().search(this.search.toLowerCase()) != -1)
+        }
+
+        document.addEventListener(
+            'scroll', 
+            function(ev) 
+            {
+                // Si on arrive en bas de page
+                if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight)
+                {
+                    // On ajoute 1 tableau à l'écran (mais il faudra peut-être en rajouter 4 pour faire joli dans toutes les résolutions)
+                    if (this.tabs_displayed.length < this.tabs_filtered.length)
+                    {
+                        this.tabs_displayed.push(this.tabs_filtered[this.tabs_displayed.length]);
+                    }
+                    if (this.tabs_displayed.length < this.tabs_filtered.length)
+                    {
+                        this.tabs_displayed.push(this.tabs_filtered[this.tabs_displayed.length]);
+                    }
+                    if (this.tabs_displayed.length < this.tabs_filtered.length)
+                    {
+                        this.tabs_displayed.push(this.tabs_filtered[this.tabs_displayed.length]);
+                    }
+                    if (this.tabs_displayed.length < this.tabs_filtered.length)
+                    {
+                        this.tabs_displayed.push(this.tabs_filtered[this.tabs_displayed.length]);
+                    }
+                    this.update();
+                }
+            }.bind(this)
+        )
+
+        // Affiche le tableau dans une fenêtre modale
+        viewTab(e) {
+            document.getElementById("tab_modal").style.display = "block";
+            document.getElementById("modal_image").src = "tableaux/hd/" + e.item.tabID + ".jpg";
+            document.getElementById("modal_description").innerHTML = e.item.name + " (" + e.item.format + ")";
+        }
+
+        viewCuervo() {
+            document.getElementById("cuervo_modal").style.display = "block";
+            document.getElementById("cuervo_description").innerHTML = Cuervo.bio1 + " " + Cuervo.bio2 + " " + Cuervo.bio3  + " " + Cuervo.bio4;
+        }
+
+    </script>
+</app>
