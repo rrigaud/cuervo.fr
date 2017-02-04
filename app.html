@@ -13,7 +13,7 @@
         <div class="cardflex wow fadeInUp" each={tabs_displayed}>
             <div class="cardbox" onclick={viewTab}>
                 <img src={ 'tableaux/thumbs/' + tabID + '.jpg' } alt="Tableau">
-                <div class="container"><span class="available { non: available }"></span>{name} <i>({format})</o></div>
+                <div class="container"><span class="available { non: !available }"></span>{name} <i>({format})</o></div>
             </div>
         <div>
     </div>
@@ -83,7 +83,7 @@
         // Affiche le tableau dans une fenêtre modale
         viewTab(e) {
             document.getElementById("tab_modal").style.display = "block";
-            // Evite de voir le tableau précédent en cas de chargement non instantanée en ligne (loader ?)
+            // Evite de voir le tableau précédent en cas de chargement non instantanée en ligne (loader ? )
             document.getElementById("modal_image").src = "";
             document.getElementById("modal_image").src = "tableaux/hd/" + e.item.tabID + ".jpg";
             document.getElementById("modal_description").innerHTML = e.item.name + " (" + e.item.format + ")";
