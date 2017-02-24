@@ -16,6 +16,14 @@ var tableaux = [
     available: true
 },
 {
+    tabID: "TMIX-C-2007-01-01",
+    name: "Le Chambellan a une drôle de tête",
+    category: "Techniques mixtes sur chassis",
+    format: "30x60",
+    price: "340 €",
+    available: true
+},
+{
     tabID: "TMIX-C-2006-07-01",
     name: "Sous les murailles du château de Mislotch",
     category: "Techniques mixtes sur chassis",
@@ -29,14 +37,6 @@ var tableaux = [
     category: "Techniques mixtes sur chassis",
     format: "50x50",
     price: "350 €",
-    available: true
-},
-{
-    tabID: "TMIX-C-2006-06-10",
-    name: "L'Ange assis",
-    category: "Techniques mixtes sur chassis",
-    format: "30x30",
-    price: "190 €",
     available: true
 },
 {
@@ -393,7 +393,7 @@ var tableaux = [
 },
 {
     tabID: "TMIX-C-2005-03-10",
-    name: "Quatre Saisons",
+    name: "Vivaldi",
     category: "Techniques mixtes sur chassis",
     format: "46x55",
     price: "330 €",
